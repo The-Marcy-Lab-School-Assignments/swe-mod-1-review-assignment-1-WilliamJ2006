@@ -1,6 +1,7 @@
 # Short Responses
 
 For this short response assignment, aim to write a response with the following qualities (your instructor will give you feedback on these areas):
+
 - [] Addresses all parts of the prompt
 - [] Accurately uses relevant technical terminology
 - [] Is free of grammar and spelling mistakes (double check with grammarly!)
@@ -16,25 +17,30 @@ Using the code block below, explain what it means for a function call to be an "
 ```js
 const double = (num) => {
   return num * 2;
-}
+};
 
 const result = double(5);
 ```
 
 In your response, make sure to cover the following details:
+
 1. Explain what an "expression" is.
 2. Explain how it is determined what value a function call will resolve/evaluate to.
 3. Explain why function calls sometimes resolve/evaluate to `undefined`.
 
 ### Response 1
 
-Your response...
+1. An expression is a equation that when written in code, will automatically evaluate the result of the operation between variables/numbers.
+
+2. What the result of the inputed `num` times 2 is, `*` represents multiplication and were returning the result. In this case it'll result in 10 because 5\*2 is 10.
+
+3. It can be undefined if what's passed in isn't a number or atleast something that can be converted to a number through type coercion. If you trying to do an mathematiacal expression with something that isn't a number it'll equate to undefined.
 
 ---
 
 ## Prompt 2
 
-Analyze the following code. Then, fill in the template below with the callstack and the values of all variables at the moment when the `getFirstLetter()` function has just been called *for the first time* but has NOT yet returned.
+Analyze the following code. Then, fill in the template below with the callstack and the values of all variables at the moment when the `getFirstLetter()` function has just been called _for the first time_ but has NOT yet returned.
 
 ```js
 const buildProfile = (firstName, lastName, age) => {
@@ -42,25 +48,25 @@ const buildProfile = (firstName, lastName, age) => {
   const initials = extractInitials(firstName, lastName);
   const bio = `${fullName} (${initials}) - Age: ${age}`;
   return bio;
-}
+};
 
 const createFullName = (first, last) => {
-  const fullName = first + " " + last;
+  const fullName = first + ' ' + last;
   return fullName;
-}
+};
 
 const extractInitials = (first, last) => {
   const firstInitial = getFirstLetter(first); // <--- we're in this function call
   const lastInitial = getFirstLetter(last);
   return firstInitial + lastInitial;
-}
+};
 
 const getFirstLetter = (name) => {
   // ***draw the callstack at this moment before the return***
   return name[0].toUpperCase();
-}
+};
 
-const userProfile = buildProfile("reuben", "ogbonna", 24);
+const userProfile = buildProfile('reuben', 'ogbonna', 24);
 console.log(userProfile); // reuben ogbonna (RO) - Age: 24
 ```
 
@@ -76,40 +82,40 @@ console.log(userProfile); // reuben ogbonna (RO) - Age: 24
 ```
 Callstack: (recent calls at the top)
 ---------------------------
-[           ]
-[           ]
-[           ]
-[           ]
+[getFirstLetter           ]
+[extractInitials           ]
+[buildProfile           ]
+[Global           ]
 
 
 Variables by Scope:
 ---------------------------
 Global Scope:
-- buildProfile = ?
-- createFullName = ?
-- extractInitials = ?
-- getFirstLetter = ?
-- userProfile = ?
+- buildProfile = function
+- createFullName = function
+- extractInitials = function
+- getFirstLetter = function
+- userProfile = waiting
 
 buildProfile() scope:
-- firstName = ?
-- lastName = ?
-- age = ?
-- fullName = ?
-- initials = ?
-- bio = ?
+- firstName = 'reuben'
+- lastName = 'ogbonna'
+- age = 24
+- fullName = 'reuben ogbonna'
+- initials = waiting
+- bio = undefined
 
 createFullName() scope:
-- (list any parameters/variables)
+- Already returned
 
 extractInitials() scope:
-- first = ?
-- last = ?
-- firstInitial = ?
-- lastInitial = ?
+- first = 'reuben'
+- last = 'ogbonna'
+- firstInitial = waiting
+- lastInitial = undefined
 
 getFirstLetter() scope:
-- name = ?
+- name = 'reuben'
 ```
 
 ---
@@ -125,7 +131,7 @@ let count = 0;
 
 const incrementA = () => {
   count = count + 1;
-}
+};
 
 incrementA();
 console.log(count);
@@ -139,7 +145,7 @@ let count = 0;
 const incrementB = () => {
   let count = 0;
   count = count + 1;
-}
+};
 
 incrementB();
 console.log(count);
@@ -147,7 +153,7 @@ console.log(count);
 
 ### Response 3
 
-Your response...
+Example A will print 1 because the function `incrementA` will use the global variable `count`. Example B will print 0 because function `incrementB` has a variable inside of it's local scope called `count` so that's what we're incrementing. When we print in global scope, we print the `count` in the outer scope.
 
 ---
 
@@ -173,7 +179,9 @@ Which approach would you choose and why? In your answer, identify at least one p
 
 ### Response 4
 
-Your response...
+I would choose approach a because it's more readable and easier to understand. The trade off is `.indexOf()` will return -1 if the name isn't found which means our splice will remove the last student in the array if no matching name is found. This can be solved with a guard clause. Another tradeoff is mutating the original array, but this can be fine if you don't need to store the original array.
+
+Solution B is harder to understand and goes through the process of creating a new array and pushing any values that isn't the student you want to remove into the new array.
 
 ---
 
@@ -183,9 +191,9 @@ Label the basic array methods below with a 1-sentence description of what they d
 
 ### Response 5
 
-- `push(value)` - ???
-- `pop()` - ???
-- `shift()` - ???
-- `unshift(value)` - ???
-- `splice(index, deleteCount)` - ???
-- `slice(start, end)` - ???
+- `push(value)` - `(mutating)` Adding to end of array.
+- `pop()` - `(mutating)` Removing from end of array.
+- `shift()` - `(mutating)` Removing from front of array.
+- `unshift(value)` - `(mutating)` Adding to front of array.
+- `splice(index, deleteCount)` - `(mutating)` Deleting from array or inserting to array.
+- `slice(start, end)` - `(non-mutating)` Creating a shallow copy from start index to the index before end.
