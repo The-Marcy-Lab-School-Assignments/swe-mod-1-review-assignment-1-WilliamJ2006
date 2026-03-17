@@ -30,11 +30,11 @@ In your response, make sure to cover the following details:
 
 ### Response 1
 
-1. An expression is a equation that when written in code, will automatically evaluate the result of the operation between variables/numbers.
+1. An expression is something in JS that equates to a value.
 
-2. What the result of the inputed `num` times 2 is, `*` represents multiplication and were returning the result. In this case it'll result in 10 because 5\*2 is 10.
+2. What the result of the inputed `num` times 2 is, `*` represents multiplication and were returning the result. In this case it'll result in 10 because `5*2` is 10.
 
-3. It can be undefined if what's passed in isn't a number or atleast something that can be converted to a number through type coercion. If you trying to do an mathematiacal expression with something that isn't a number it'll equate to undefined.
+3. Nothing is returned by the function so the function resolves to undefined.
 
 ---
 
